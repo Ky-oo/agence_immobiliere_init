@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateAnnonceController!{% endblock %}
+
+{% block body %}
+
+    <h1>{{ annonce.titre }}</h1>
+    <p>publiée le {{ annonce.date | date("d/m/Y") }}</p>
+
+    <ul>
+        <li>Localisation: {{ annonce.bienImmobilier.rue }} {{ annonce.bienImmobilier.codePostal }} {{ annonce.bienImmobilier.ville }}</li>
+        <li>Surface habitable totale: {{ annonce.bienImmobilier.surfaceHabitable }}</li>
+        <li>Surface non habitable totale: {{ annonce.bienImmobilier.surfaceNonHabitable }}</li>
+        <li>Détail des surfaces:</li>
+    </ul>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Pièce</th>
+            <th scope="col">Surface</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for piece in annonce.bienImmobilier.pieces %}
+            <tr>
+                <td>{{ piece.typePiece.libelle }}</td>
+                <td>{{ piece.surface }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+<h2> Prix du bien: {{ annonce.prix() }}€ </h2
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DataImportController!{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Mot de passe</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for nom, password in createdUsers %}
+            <tr>
+                <td>{{ nom }}</td>
+                <td>{{ password }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
